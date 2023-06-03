@@ -1,9 +1,10 @@
 import { useRef } from "react";
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import "./Register.scss";
 import { useNavigate } from "react-router-dom";
 import logo from "./movieflix.png";
+import { axiosInstance } from "../../config";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -24,7 +25,7 @@ export default function Register() {
     setPassword(passwordRef.current.value);
 
     try {
-      await axios.post("auth/register", { email, username, password });
+      await axiosInstance.post("auth/register", { email, username, password });
       navigate("/login");
     } catch (err) {}
   };
