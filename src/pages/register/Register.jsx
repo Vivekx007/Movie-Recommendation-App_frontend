@@ -27,7 +27,9 @@ export default function Register() {
     try {
       await axiosInstance.post("auth/register", { email, username, password });
       navigate("/login");
-    } catch (err) {}
+    } catch (err) {
+      console.error("Registration failed:", err);
+    }
   };
   const handleLogin = () => {
     console.log("sigin");
